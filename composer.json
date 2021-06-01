@@ -54,7 +54,7 @@
         "symfony/validator": "^4.4",
         "symfony/webpack-encore-bundle": "^1.8",
         "symfony/profiler-pack": "^1.0",
-        "symfony/web-server-bundle": "4.4.*"
+        "symfony/web-server-bundle": "4.4.*",
         "symfony/yaml": "^4.4",
         "twig/twig": "^2.10",
         "vich/uploader-bundle": "^1.4",
