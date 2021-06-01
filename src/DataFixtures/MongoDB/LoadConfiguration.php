@@ -66,8 +66,10 @@ class LoadConfiguration implements FixtureInterface
             $configuration->setAppBaseline('Créez des cartes à GoGo'); // TODO translate
 
             $activateHomePage;
-            $configuration->setActivatePartnersPage(true);
-            $configuration->setPartnerPageTitle('Partenaires'); // TODO translate
+            $configuration->setActivatePage1(true);
+            $configuration->setPage1Title('Page 1');
+            $configuration->setActivatePage2(false);
+            $configuration->setActivatePage3(true);
             $configuration->setActivateAbouts(true);
             $configuration->setAboutHeaderTitle('A propos'); // TODO translate
 
