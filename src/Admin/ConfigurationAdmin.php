@@ -33,7 +33,7 @@ class ConfigurationAdmin extends ConfigurationAbstractAdmin
                     'Français' => 'fr', 
                     'English' => 'en'
                 ]])
-                ->add('customDomain', UrlType::class, ['help_trans_params' => ['ip' => $_SERVER['SERVER_ADDR']]])
+                //->add('customDomain', UrlType::class, ['help_trans_params' => ['ip' => $_SERVER['SERVER_ADDR']]])
                 ->add('dataLicenseUrl')
             ->end()
             ->halfPanel('images')
@@ -44,8 +44,6 @@ class ConfigurationAdmin extends ConfigurationAbstractAdmin
             ->end()
             ->halfPanel('pages')
                 ->add('activateHomePage')
-                ->add('activatePartnersPage')
-                ->add('partnerPageTitle')
                 ->add('activateAbouts')
                 ->add('aboutHeaderTitle')
             ->end()
