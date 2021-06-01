@@ -385,6 +385,12 @@ class User extends BaseUser
      * @MongoDB\Field(type="string")
      */
     protected $token;
+    
+     /**
+     * @var string
+     * @MongoDB\Field(type="string")
+     */
+    protected $codeInvitation;
 
     public function __construct()
     {
@@ -392,7 +398,19 @@ class User extends BaseUser
         // your own logic
         $this->createToken();
     }
+    
+    public function getCodeInvitation()
+	{
+        return $this->codeInvitation;
+    }
 
+    public function setCodeInvitation($codeInvitation)
+	{
+        $this->codeInvitation = $codeInvitation;
+
+        return $this;
+    }
+    
     /**
      * Returns the gender list.
      *
