@@ -32,19 +32,23 @@ class PartnerAdmin extends GoGoAbstractAdmin
                 ])
             ->add('logo', ModelType::class, [
                 'class' => 'App\Document\PartnerImage',
+                'label' => 'Image',
                 'mapped' => true, ])
-            ->add('websiteUrl');
+            ->add('websiteUrl', null, ['required' => false])
+            ->add('page');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
+        $datagridMapper
+            ->add('page');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('name')
+            ->addIdentifier('page')
             ->add('_action', 'actions', [
                 'actions' => [
                     'show' => [],
