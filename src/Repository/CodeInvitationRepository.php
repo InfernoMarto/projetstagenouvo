@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Document\CodeInvitation;
 use Doctrine\ODM\MongoDB\Repository\DocumentRepository;
+use \Datetime;
 
 /**
  * CodeInvitationRepository.
@@ -23,13 +24,21 @@ class CodeInvitationRepository extends DocumentRepository
     
     public function codeInvitationIsValid($userCodeInvitation)
     {
-        $test = $this->findOneBY(['code' => $userCodeInvitation, 'active' => true]);
-        if($test==null){
+        $key = $this->findOneBY(['code' => $userCodeInvitation, 'active' => true]);
+        if($key==null){
             return false;
         }else{
-            $this->findOneBY(['code' => $userCodeInvitation])->setActive(false);
-            return true;
+            $today = new DateTime('NOW');
+            if($today > $key->getDate()) {
+                $this->findOneBY(['code' => $userCodeInvitation])->setActive(false);
+                return false;
+            } else {
+                $this->findOneBY(['code' => $userCodeInvitation])->setUsable($key->getUsable()-1);
+                if($key->getUsable()<=0){
+                    $this->findOneBY(['code' => $userCodeInvitation])->setActive(false);
+                }
+                return true; 
+            }
         }
-
     }
 }
