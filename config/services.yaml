@@ -350,7 +350,12 @@ services:
         calls: [ [ setGoGoTranslator, ['@translator'] ] ]
         tags:
             - { name: sonata.admin, manager_type: doctrine_mongodb, group: other_config, label: webhooks._label }
-
+            
+    admin.key_config:
+        class: App\Admin\KeyAdmin
+        arguments: [~, App\Document\CodeInvitation, '' ]
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, group: other_config, label: Clés d'activations }
 
     # --------- HIDDEN -----------
 
